@@ -1,9 +1,8 @@
-
 const team = [
-    { name: "Ava Sinclair", role: "Creative Designer" },
-    { name: "Diana Moro", role: "Creative Designer" },
+    { name: "Diana Moro", role: "Project Manager " },
+    { name: "Elena Sinclair", role: "Director" },
     { name: "Liana Fereira", role: "Creative Designer" },
-    { name: "Sara Breskey", role: "Creative Designer" }
+    { name: "Sara Breskey", role: "Web Developer" },
 ];
 
 const cursor = document.querySelector(".cursor");
@@ -22,27 +21,27 @@ const updateCursorClass = (xPosition) => {
         if (currentSlide < totalSlides) {
             cursorIcon.classList.remove("ph-arrow-left");
             cursorIcon.classList.add("ph-arrow-right");
-            cursor.style.display = '';
+            cursor.style.display = "";
         } else {
-            cursor.style.display = 'none';
+            cursor.style.display = "none";
         }
     } else {
         if (currentSlide > 1) {
             cursorIcon.classList.remove("ph-arrow-right");
             cursorIcon.classList.add("ph-arrow-left");
-            cursor.style.display = '';
+            cursor.style.display = "";
         } else {
-            cursor.style.display = 'none';
+            cursor.style.display = "none";
         }
     }
-}
+};
 
 document.addEventListener("mousemove", (e) => {
     gsap.to(cursor, {
         x: e.clientX - cursorWidth,
         y: e.clientY - cursorHeight,
         duration: 1,
-        ease: "power3.out"
+        ease: "power3.out",
     });
 
     updateCursorClass(e.clientX);
@@ -66,13 +65,13 @@ const animateSlide = (slideNumber, reveal) => {
         clipPath: clipPathValue,
         duration: 1,
         ease: "power4.out",
-        delay: 0.3
+        delay: 0.3,
     });
 
     gsap.to(img, {
         clipPath: clipPathValue,
         duration: 1,
-        ease: "power4.out"
+        ease: "power4.out",
     });
 };
 
@@ -82,17 +81,16 @@ const handleRightClick = () => {
     if (currentSlide < totalSlides) {
         animateSlide(currentSlide, false); // hide current
         currentSlide++;
-        animateSlide(currentSlide, true);  // reveal next
+        animateSlide(currentSlide, true); // reveal next
         updateInfo(currentSlide);
     }
 };
-
 
 const handleLeftClick = () => {
     if (currentSlide > 1) {
         animateSlide(currentSlide, false); // hide current
         currentSlide--;
-        animateSlide(currentSlide, true);  // reveal previous
+        animateSlide(currentSlide, true); // reveal previous
         updateInfo(currentSlide);
     }
 };
@@ -106,12 +104,3 @@ document.addEventListener("click", (e) => {
         handleLeftClick();
     }
 });
-
-
-
-
-
-
-
-
-
